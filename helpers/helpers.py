@@ -10,6 +10,7 @@ import matplotlib
 matplotlib.use('nbagg')
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 import datetime
 import pandas as pd
 
@@ -31,15 +32,18 @@ from DQTools.search import Search
 
 class Helpers:
 
-    def __init__(self, out):
+    def __init__(self, out, keyfile=None):
 
         self.out = out
+        self.keyfile = os.path.join(os.path.expanduser("~"), 
+                                    '.assimila_dq')
 
-    @staticmethod
-    def get_data_from_datacube(product, subproduct, start, end,
+    def get_data_from_datacube(self, product, subproduct, start, end,
                                latitude, longitude):
 
-        ds = Dataset(product=product, subproduct=subproduct)
+        ds = Dataset(product=product, 
+                     subproduct=subproduct,
+                     key_file=self.keyfile)
 
         ds.get_data(start=start, stop=end,
                     latlon=[latitude, longitude])
@@ -53,7 +57,9 @@ class Helpers:
             clear_output()
             print("Getting data...")
 
-            ds = Dataset(product=product, subproduct=subproduct)
+            ds = Dataset(product=product, 
+                         subproduct=subproduct,
+                         key_file=self.keyfile)
 
             ds.get_data(start=start, stop=end,
                         region=[north, east, south,west])
