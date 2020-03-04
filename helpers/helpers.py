@@ -36,7 +36,7 @@ class Helpers:
 
         self.out = out
         self.keyfile = os.path.join(os.path.expanduser("~"), 
-                                    '.assimila_dq')
+                                    'assimila_dq.txt')
 
     def get_data_from_datacube(self, product, subproduct, start, end,
                                latitude, longitude):
