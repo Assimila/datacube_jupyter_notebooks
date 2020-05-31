@@ -4,6 +4,7 @@ sys.path.append("/workspace/DQTools/")
 import matplotlib
 matplotlib.use('nbagg')
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 import ipywidgets as widgets
@@ -15,18 +16,35 @@ from IPython.lib.display import FileLink
 
 import helpers.helpers as helpers
 from DQTools.dataset import Dataset
-from DQTools.search import Search
 
 
 class PeatHelpers(helpers.Helpers):
 
+    def get_dates(self, dataset, start, end):
+        start = np.datetime64(start)
+        end = np.datetime64(end)
+        dataset.calculate_timesteps()
+        timesteps = dataset.timesteps
+
+        later = filter(lambda d: d >= start, timesteps)
+        first = min(later, key=lambda d: abs(d - start))
+
+        earlier = filter(lambda d: d <= end, timesteps)
+        last = min(earlier, key=lambda d: abs(d - end))
+        if start != first:
+            print(f'First available date {first}')
+        if end != last:
+            print(f'Last available date {last}')
+
+        return first, last
+
+
     def get_data_from_datacube(self, product, subproduct, start, end,
                                latitude, longitude, projection=None):
-
         ds = Dataset(product=product,
                      subproduct=subproduct)
-
-        ds.get_data(start=start, stop=end, projection=projection,
+        first, last = self.get_dates(ds, start, end)
+        ds.get_data(start=first, stop=last, projection=projection,
                     latlon=[latitude, longitude])
 
         return ds.data
@@ -54,9 +72,7 @@ class PeatHelpers(helpers.Helpers):
             clear_output()
             print("Getting data...")
 
-            print(f'y={y}, x={x}')
             lat, lon = self.reproject_coords(y, x, projection)
-            print(f'lat={lat}, lon={lon}')
             data = self.get_data_from_datacube(product,
                                                subproduct,
                                                pd.to_datetime(start),
