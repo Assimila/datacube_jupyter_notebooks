@@ -1,6 +1,5 @@
 import sys
 sys.path.append("/workspace/DQTools/")
-#sys.path.append("/workspace//")
 
 import matplotlib
 matplotlib.use('nbagg')
@@ -8,9 +7,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 import ipywidgets as widgets
+from ipyleaflet import LayerGroup, GeoJSON
 from pyproj import Proj, transform
 
-from IPython.display import clear_output
+from IPython.display import display, clear_output
 from IPython.lib.display import FileLink
 
 import helpers.helpers as helpers
@@ -76,6 +76,60 @@ class PeatHelpers(helpers.Helpers):
             data.__getitem__(subproduct).plot()
             plt.show()
 
+    def color_map_nesw_compare_reduced(self, product, subproduct, north, east, south,
+                                       west, date1, date2):
+
+        with self.out:
+            clear_output()
+            print("Getting data...")
+
+
+            PeatHelpers.check(self, north, east, south, west, date1, date1)
+            PeatHelpers.check(self, north, east, south, west, date2, date2)
+
+            list_of_results1 = PeatHelpers.get_data_from_datacube_nesw(
+                self, product, subproduct, north, east,
+                south, west, date1, date1)
+            y1 = list_of_results1
+
+            list_of_results2 = PeatHelpers.get_data_from_datacube_nesw(
+                self, product, subproduct, north, east,
+                south, west, date2, date2)
+
+            y2 = list_of_results2
+
+            fig, axs = plt.subplots(1, 2, figsize=(9, 4))
+            y1.__getitem__(subproduct).plot(ax=axs[0])
+            y2.__getitem__(subproduct).plot(ax=axs[1])
+            plt.tight_layout()
+            plt.show()
+
+
+    def prepare_map(dc, m):
+
+        dc.rectangle = {'shapeOptions': {'color': '#FF0000'}}
+        dc.marker = {"shapeOptions": {"fillColor": "#fca45d",
+                                      "color": "#fca45d", "fillOpacity": 1.0}}
+        dc.polyline = {}
+        dc.polygon = {}
+        dc.circlemarker = {}
+
+        # Create a group of layers and add it to the Map
+        #group = LayerGroup()
+        #m.add_layer(group)
+        # given British Isles: N: 38.25, S: -36.25, E: 53.25, W: -19.25
+        #british_isles = GeoJSON(
+        #    data={'type': 'Feature', 'properties':
+        #        {'name': "Africa", 'style':
+        #            {'color': '#0000FF', 'clickable': True}},
+        #          'geometry': {'type': 'Polygon',
+        #                       'coordinates': [[[-14.56478, 61.03436],
+        #                                         [2.76317,61.03436],
+        #                                         [2.0736,49.80936],
+        #                                         [-10.93003,49.80936]]]}},
+        #    hover_style={'fillColor': '03449e'})
+
+        #group.add_layer(british_isles)
 
 class PeatWidgets(helpers.Widgets):
 
@@ -103,3 +157,23 @@ class PeatWidgets(helpers.Widgets):
         else:
             attributes = {"min": -90, "max": 90, "description": "Latitude (y)"}
         return attributes
+
+
+    @staticmethod
+    def display_widget_comparison_reduced(product, subproduct, north, east, south,
+                                          west, date1,  date2, button, m):
+
+        from ipywidgets import HBox, VBox
+
+        # for w in widget_list:
+        #     display(w)
+        box1 = VBox([product, subproduct, north, east, south,
+                     west, date1, date2, button])
+        box2 = HBox([box1, m])
+        box_layout = widgets.Layout(
+            display='flex',
+            flex_flow='row',
+            align_items='stretch',
+            width='100%')
+        display(box2)
+
