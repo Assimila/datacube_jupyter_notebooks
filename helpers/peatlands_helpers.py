@@ -8,7 +8,6 @@ import numpy as np
 import pandas as pd
 
 import ipywidgets as widgets
-from ipyleaflet import LayerGroup, GeoJSON
 from pyproj import Proj, transform
 
 from IPython.display import display, clear_output
@@ -20,6 +19,20 @@ from DQTools.dataset import Dataset
 
 class PeatHelpers(helpers.Helpers):
 
+    def get_dates(self, dataset, start, end):
+        start = np.datetime64(start)
+        end = np.datetime64(end)
+        dataset.calculate_timesteps()
+        timesteps = dataset.timesteps
+        first = self.closest_later_date(timesteps, start)
+        last = self.closest_earlier_date(timesteps, end)
+        if start != first:
+            print(f'First available date {first}')
+        if end != last:
+            print(f'Last available date {last}')
+
+        return first, last
+
     def closest_earlier_date(self, date_list, date):
         earlier = filter(lambda d: d <= date, date_list)
         closest = min(earlier, key=lambda d: abs(d - date))
@@ -29,28 +42,6 @@ class PeatHelpers(helpers.Helpers):
         earlier = filter(lambda d: d >= date, date_list)
         closest = min(earlier, key=lambda d: abs(d - date))
         return closest
-
-    def get_dates(self, dataset, start, end):
-        start = np.datetime64(start)
-        end = np.datetime64(end)
-        dataset.calculate_timesteps()
-        timesteps = dataset.timesteps
-
-        #later = filter(lambda d: d >= start, timesteps)
-        #first = min(later, key=lambda d: abs(d - start))
-        first = self.closest_later_date(timesteps, start)
-
-        #earlier = filter(lambda d: d <= end, timesteps)
-        #last = min(earlier, key=lambda d: abs(d - end))
-        last = self.closest_earlier_date(timesteps, end)
-        if start != first:
-            print(f'First available date {first}')
-        if end != last:
-            print(f'Last available date {last}')
-
-        return first, last
-
-    #def check_dates(self):
 
     def get_data_from_datacube(self, product, subproduct, start, end,
                                latitude, longitude, projection=None):
@@ -143,22 +134,6 @@ class PeatHelpers(helpers.Helpers):
         dc.polygon = {}
         dc.circlemarker = {}
 
-        # Create a group of layers and add it to the Map
-        #group = LayerGroup()
-        #m.add_layer(group)
-        # given British Isles: N: 38.25, S: -36.25, E: 53.25, W: -19.25
-        #british_isles = GeoJSON(
-        #    data={'type': 'Feature', 'properties':
-        #        {'name': "Africa", 'style':
-        #            {'color': '#0000FF', 'clickable': True}},
-        #          'geometry': {'type': 'Polygon',
-        #                       'coordinates': [[[-14.56478, 61.03436],
-        #                                         [2.76317,61.03436],
-        #                                         [2.0736,49.80936],
-        #                                         [-10.93003,49.80936]]]}},
-        #    hover_style={'fillColor': '03449e'})
-
-        #group.add_layer(british_isles)
 
 class PeatWidgets(helpers.Widgets):
 
@@ -194,8 +169,6 @@ class PeatWidgets(helpers.Widgets):
 
         from ipywidgets import HBox, VBox
 
-        # for w in widget_list:
-        #     display(w)
         box1 = VBox([product, subproduct, north, east, south,
                      west, date1, date2, button])
         box2 = HBox([box1, m])
