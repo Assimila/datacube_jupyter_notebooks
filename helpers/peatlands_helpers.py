@@ -20,17 +20,29 @@ from DQTools.dataset import Dataset
 
 class PeatHelpers(helpers.Helpers):
 
+    def closest_earlier_date(self, date_list, date):
+        earlier = filter(lambda d: d <= date, date_list)
+        closest = min(earlier, key=lambda d: abs(d - date))
+        return closest
+
+    def closest_later_date(self, date_list, date):
+        earlier = filter(lambda d: d >= date, date_list)
+        closest = min(earlier, key=lambda d: abs(d - date))
+        return closest
+
     def get_dates(self, dataset, start, end):
         start = np.datetime64(start)
         end = np.datetime64(end)
         dataset.calculate_timesteps()
         timesteps = dataset.timesteps
 
-        later = filter(lambda d: d >= start, timesteps)
-        first = min(later, key=lambda d: abs(d - start))
+        #later = filter(lambda d: d >= start, timesteps)
+        #first = min(later, key=lambda d: abs(d - start))
+        first = self.closest_later_date(timesteps, start)
 
-        earlier = filter(lambda d: d <= end, timesteps)
-        last = min(earlier, key=lambda d: abs(d - end))
+        #earlier = filter(lambda d: d <= end, timesteps)
+        #last = min(earlier, key=lambda d: abs(d - end))
+        last = self.closest_earlier_date(timesteps, end)
         if start != first:
             print(f'First available date {first}')
         if end != last:
@@ -38,6 +50,7 @@ class PeatHelpers(helpers.Helpers):
 
         return first, last
 
+    #def check_dates(self):
 
     def get_data_from_datacube(self, product, subproduct, start, end,
                                latitude, longitude, projection=None):
