@@ -26,11 +26,13 @@ class PeatHelpers(helpers.Helpers):
         timesteps = dataset.timesteps
         first = self.closest_later_date(timesteps, start)
         last = self.closest_earlier_date(timesteps, end)
-        if start != first:
+        if start != first and first is not None:
             print(f'First available date {first}')
-        if end != last:
+        if end != last and last is not None:
             print(f'Last available date {last}')
-
+        if first is None or last is None:
+            print(f'Available dates are {dataset.first_timestep} to {dataset.last_timestep}')
+            raise ValueError('Requested dates outside of available dates.')
         return first, last
 
     def closest_earlier_date(self, date_list, date):
