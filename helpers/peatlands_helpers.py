@@ -35,13 +35,33 @@ class PeatHelpers(helpers.Helpers):
 
     def closest_earlier_date(self, date_list, date):
         earlier = filter(lambda d: d <= date, date_list)
-        closest = min(earlier, key=lambda d: abs(d - date))
+        try:
+            closest = min(earlier, key=lambda d: abs(d - date))
+        except ValueError:
+            closest = None
         return closest
 
     def closest_later_date(self, date_list, date):
         earlier = filter(lambda d: d >= date, date_list)
-        closest = min(earlier, key=lambda d: abs(d - date))
+        try:
+            closest = min(earlier, key=lambda d: abs(d - date))
+        except ValueError:
+            closest = None
         return closest
+
+    def check_date(self, product, subproduct, date):
+        ds = Dataset(product=product,
+                     subproduct=subproduct)
+        ds.calculate_timesteps()
+        timesteps = ds.timesteps
+        date = np.datetime64(date)
+        available = date in timesteps
+        if not available:
+            date1 = self.closest_earlier_date(timesteps, date)
+            date2 = self.closest_later_date(timesteps, date)
+            print(f'{date} not available. Nearest available dates: {date1} and {date2}')
+            raise KeyError(f'{date} not available. Nearest available dates: {date1} and {date2}')
+        return available
 
     def get_data_from_datacube(self, product, subproduct, start, end,
                                latitude, longitude, projection=None):
@@ -106,6 +126,8 @@ class PeatHelpers(helpers.Helpers):
 
             PeatHelpers.check(self, north, east, south, west, date1, date1)
             PeatHelpers.check(self, north, east, south, west, date2, date2)
+            self.check_date(product, subproduct, date1)
+            self.check_date(product, subproduct, date2)
 
             list_of_results1 = PeatHelpers.get_data_from_datacube_nesw(
                 self, product, subproduct, north, east,
