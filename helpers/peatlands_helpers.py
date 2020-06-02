@@ -53,7 +53,9 @@ class PeatHelpers(helpers.Helpers):
 
     def check_date(self, product, subproduct, date):
         ds = Dataset(product=product,
-                     subproduct=subproduct)
+                     subproduct=subproduct,
+                     key_file=self.keyfile)
+
         ds.calculate_timesteps()
         timesteps = ds.timesteps
         date = np.datetime64(date)
@@ -68,7 +70,9 @@ class PeatHelpers(helpers.Helpers):
     def get_data_from_datacube(self, product, subproduct, start, end,
                                latitude, longitude, projection=None):
         ds = Dataset(product=product,
-                     subproduct=subproduct)
+                     subproduct=subproduct,
+                     key_file=self.keyfile)
+
         first, last = self.get_dates(ds, start, end)
         ds.get_data(start=first, stop=last, projection=projection,
                     latlon=[latitude, longitude])
