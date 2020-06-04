@@ -170,6 +170,12 @@ class PeatWidgets(helpers.Widgets):
             layout=self.item_layout,
             disabled=False, )
     
+    def get_subproduct_list(self, product):
+        if product == 'era5':
+            return['skt']
+        else:
+            return self.search.get_subproduct_list_of_product(product)
+    
     def get_projection_widgets(self):
         return self.projection()
 
