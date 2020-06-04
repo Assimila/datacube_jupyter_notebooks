@@ -161,6 +161,15 @@ class PeatHelpers(helpers.Helpers):
 
 class PeatWidgets(helpers.Widgets):
 
+    
+    def product(self):
+        projection_list = ['MOD11A1', 'MOD13A2', 'MCD43A3', 'era5']
+        return widgets.Dropdown(
+            options=projection_list,
+            description='Product:',
+            layout=self.item_layout,
+            disabled=False, )
+    
     def get_projection_widgets(self):
         return self.projection()
 
