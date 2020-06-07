@@ -48,19 +48,32 @@ class PeatHelpers(helpers.Helpers):
 
 
     def get_dates(self, dataset, start, end):
-        start = np.datetime64(start)
-        end = np.datetime64(end)
-        dataset.calculate_timesteps()
-        timesteps = dataset.timesteps
-        first = self.closest_later_date(timesteps, start)
-        last = self.closest_earlier_date(timesteps, end)
-        if start != first and first is not None:
-            print(f'First available date {first}')
-        if end != last and last is not None:
-            print(f'Last available date {last}')
-        if first is None or last is None:
-            print(f'Available dates are {dataset.first_timestep} to {dataset.last_timestep}')
+        #start = np.datetime64(start)
+        #end = np.datetime64(end)
+        first_date = dataset.first_timestep
+        last_date = dataset.last_timestep
+        if end < start:
+            print('End date before start date.')
+            raise ValueError('End date before start date.')
+        if  end < first_date:
+            print(f'First available date {first_date}')
             raise ValueError('Requested dates outside of available dates.')
+        if start > last_date:
+            print(f'Last available date {last_date}')
+            raise ValueError('Requested dates outside of available dates.')
+
+        #check start date
+        if start <= first_date:
+            first = first_date
+        else:
+            timesteps = self.calculate_timesteps([start.year])
+            first = self.closest_later_date(timesteps, start)
+        #check end date
+        if end >= last_date:
+            last = last_date
+        else:
+            timesteps = self.calculate_timesteps([end.year])
+            last = self.closest_earlier_date(timesteps, end)
         return first, last
 
     def closest_earlier_date(self, date_list, date):
@@ -148,8 +161,8 @@ class PeatHelpers(helpers.Helpers):
             lat, lon = self.reproject_coords(y, x, projection)
             data = self.get_data_from_datacube(product,
                                                subproduct,
-                                               pd.to_datetime(start),
-                                               pd.to_datetime(end),
+                                               start,#pd.to_datetime(start),
+                                               end, #pd.to_datetime(end),
                                                lat,
                                                lon,
                                                projection)
