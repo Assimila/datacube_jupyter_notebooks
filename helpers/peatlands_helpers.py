@@ -4,6 +4,7 @@ sys.path.append("/workspace/DQTools/")
 import matplotlib
 matplotlib.use('nbagg')
 import matplotlib.pyplot as plt
+import datetime as dt
 import numpy as np
 import pandas as pd
 
@@ -18,6 +19,33 @@ from DQTools.dataset import Dataset
 
 
 class PeatHelpers(helpers.Helpers):
+
+    def calculate_timesteps(self, years, period=16):
+        """For Modis products, There is always a time step on 1st Jan each year
+        Returns a list of all possible product dates in the years requested
+        prepended with the last date in the previous year and the first date in
+        the following year to allow for looking for nearest dates at the start or
+        end of a year.
+
+        years:  A list of years
+        period: period of product in days
+        """
+
+        n = 366//period
+        # get last date in preceeding year
+        dates = [dt.date(years[0]-1, 1, 1) + dt.timedelta(days=n*period)]
+        if dates[0].year == years[0]:  # day 366 but not a leap year
+            dates = [dt.date(years[0]-1, 1, 1) + dt.timedelta(days=(n-1)*period)]
+        for year in years:
+            start = dt.date(year, 1, 1)
+            dates = dates + [start + dt.timedelta(days=i*period) for i in range(n)]
+            if dates[-1].year != year:
+                # if last date was day 366 but this was not a leap year, remove date
+                dates = dates[:-1]
+        dates = dates + [dt.date(years[-1]+1, 1, 1)]
+
+        return dates
+
 
     def get_dates(self, dataset, start, end):
         start = np.datetime64(start)
@@ -43,6 +71,7 @@ class PeatHelpers(helpers.Helpers):
             closest = None
         return closest
 
+
     def closest_later_date(self, date_list, date):
         earlier = filter(lambda d: d >= date, date_list)
         try:
@@ -51,20 +80,34 @@ class PeatHelpers(helpers.Helpers):
             closest = None
         return closest
 
+
     def check_date(self, product, subproduct, date):
         ds = Dataset(product=product,
                      subproduct=subproduct,
                      key_file=self.keyfile)
 
-        ds.calculate_timesteps()
-        timesteps = ds.timesteps
-        date = np.datetime64(date)
-        available = date in timesteps
+        first_date = ds.first_timestep
+        last_date = ds.last_timestep
+        available = True
+        if np.datetime64(date) < first_date:
+            print(f'{date} not available. First available date {first_date}')
+            available = False
+        elif np.datetime64(date) > last_date:
+            print(f'{date} not available. Last available date {last_date}')
+            available = False
+        elif product == 'MOD13A2':
+            year = date.year
+            timesteps = self.calculate_timesteps([year], period=16)
+            available = date in timesteps
+            if not available:
+                print(type(date), type(timesteps[0]))
+                date1 = self.closest_earlier_date(timesteps, date)
+                date2 = self.closest_later_date(timesteps, date)
+                print(f'{date} not available. Nearest available dates: {date1} and {date2}')
+
         if not available:
-            date1 = self.closest_earlier_date(timesteps, date)
-            date2 = self.closest_later_date(timesteps, date)
-            print(f'{date} not available. Nearest available dates: {date1} and {date2}')
-            raise KeyError(f'{date} not available. Nearest available dates: {date1} and {date2}')
+            raise ValueError(f'{date} not available.')
+
         return available
 
     def get_data_from_datacube(self, product, subproduct, start, end,
