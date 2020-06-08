@@ -1,0 +1,81 @@
+# This has to be specified. Required by logging module
+# See: https://stackoverflow.com/a/10519480/7019148
+version: 1
+
+# Handlers allow you to change format of different messages
+handlers:
+   # Name of the method of how to handle the logging message
+   info_file_handler:
+       # class: See: https://docs.python.org/2/howto/logging.html#useful-handlers
+       #        Decides where to send the message, how to handle the actual message.
+       #        FileHandler = instances send messages to disk files. See docs.
+       #        Note: Each handler class has different keywords as below.
+       # formatter: Select the formatter to use from the 'formatter' section.
+       # filename: Where the logging message should be written.
+       # maxBytes: Maximum file size that this logfile can form.
+       # mode: Whether to append new run logs to this file or overwrite
+       #       'w' : overwrite existing log file.
+       #       'a' : append to existing log file.
+       class: logging.FileHandler
+       formatter: complex
+       filename:
+       mode: 'a'
+       level: DEBUG
+
+   mail_handler:
+       # class: use a simple mail server
+       # formatter: use pre-defined formatters
+       # mailhost: send mail to local mail server
+       # fromaddr: text to display as 'From'
+       # toaddrs: list of valid recipients
+       # subject: Email subject
+       # level: level at which this handler kicks in. Due to the nature of the
+       #     logging module, any handlers in the parent logger tree are also
+       #     tried. Thus a CRITICAL log record will pass the level test for
+       #     this handler.
+       class: logging.handlers.SMTPHandler
+       formatter: complex
+       mailhost: localhost
+       fromaddr: "DQTools@assimila.eu"
+       toaddrs: ["prise@assimila.eu"]
+       subject: "Error in DQTools HTTP CLIENT"
+       level: ERROR
+
+   mail_handler_critical:
+       class: logging.handlers.SMTPHandler
+       formatter: complex
+       mailhost: localhost
+       fromaddr: "DQTools@assimila.eu"
+       toaddrs: ["prise_critical@assimila.eu"]
+       subject: "Critical Error in DQTools HTTP CLIENT"
+       level: CRITICAL
+
+# What is used when logging.getLogger() is run
+loggers:
+     # When logger = logging.getLogger("__main__") is specified, use this logger.
+     __main__:
+         # level: Denotes what logging messages are written to file
+         # handlers: The handler which should be used to write these
+         #           messages. Specifying multiple handlers could
+         #           result in double messages.
+         level: DEBUG
+         handlers: [info_file_handler, mail_handler, mail_handler_critical]
+
+
+# Different ways to format the logging message
+formatters:
+   # complex: The name of the formatter.
+   # format: The format of the logging messages
+   #         >- Allows for multi-line strings removing trailing newline
+   #         > Allows for multi-line string with a trailing newline
+   #         asctime: Human-readable time when the LogRecord was created.
+   #         filename: Filename portion of the .py file
+   #         levelname: Text logging level for the message ('DEBUG', 'INFO' etc.)
+   #         lineno: Source line number where the logging call was issued
+   #         For more: see LogRecord attributes on https://docs.python.org/2/library/logging.html
+   # datefmt: Formatting the asctime variable to be more user-friendly
+   complex:
+      format: >-
+          %(levelname)-10s: %(asctime)-2s: %(funcName)-30s Line:
+          %(lineno)d in %(filename)-35s %(message)s
+      datefmt: "%d/%m/%Y %I:%M:%S %p"

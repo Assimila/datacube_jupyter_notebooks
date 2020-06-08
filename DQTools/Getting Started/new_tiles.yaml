@@ -1,0 +1,7 @@
+- name: madagascar
+  description: A tile over Madagascar
+  bbox: ((42.0 -10.0 0,
+          54.0 -10.0 0,
+          54.0 -27.0 0,
+          42.0 -27.0 0,
+          42.0 -10.0 0))

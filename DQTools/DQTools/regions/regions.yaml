@@ -1,0 +1,1225 @@
+afghanistan:
+  east: 74.889862
+  north: 38.4910682
+  south: 29.3772
+  west: 60.5176034
+albania:
+  east: 21.0574335
+  north: 42.6610848
+  south: 39.6448625
+  west: 19.1246095
+algeria:
+  east: 11.997337
+  north: 37.2962055
+  south: 18.968147
+  west: -8.668908
+american samoa:
+  east: -167.9322899
+  north: -10.8449746
+  south: -14.7608358
+  west: -171.2951296
+andorra:
+  east: 1.7863837
+  north: 42.6559357
+  south: 42.4288238
+  west: 1.4135781
+angola:
+  east: 24.0878856
+  north: -4.3880634
+  south: -18.038945
+  west: 11.4609793
+anguilla:
+  east: -62.7125449
+  north: 18.7951194
+  south: 18.0615454
+  west: -63.6391992
+antarctica:
+  east: 180.0
+  north: -60.0
+  south: -85.0511287
+  west: -180.0
+antigua and barbuda:
+  east: -61.447857
+  north: 17.929
+  south: 16.7573901
+  west: -62.5536517
+argentina:
+  east: -53.6374515
+  north: -21.781168
+  south: -55.1850761
+  west: -73.5600329
+armenia:
+  east: 46.6333087
+  north: 41.300712
+  south: 38.8404775
+  west: 43.4471395
+aruba:
+  east: -69.6409842
+  north: 12.8102998
+  south: 12.1702998
+  west: -70.2809842
+australia:
+  east: 168.2249543
+  north: -9.0882278
+  south: -55.3228175
+  west: 72.2460938
+austria:
+  east: 17.160776
+  north: 49.0205305
+  south: 46.3722761
+  west: 9.5307487
+azerbaijan:
+  east: 51.0090302
+  north: 41.9502947
+  south: 38.3929551
+  west: 44.7633701
+bahamas:
+  east: -72.4477521
+  north: 27.4734551
+  south: 20.7059846
+  west: -80.7001941
+bahrain:
+  east: 50.9233693
+  north: 26.6872444
+  south: 25.535
+  west: 50.2697989
+bangladesh:
+  east: 92.6804979
+  north: 26.6382534
+  south: 20.3756582
+  west: 88.0075306
+barbados:
+  east: -59.2147175
+  north: 13.535
+  south: 12.845
+  west: -59.8562115
+belarus:
+  east: 32.7627809
+  north: 56.17218
+  south: 51.2575982
+  west: 23.1783344
+belgium:
+  east: 6.408097
+  north: 51.5516667
+  south: 49.4969821
+  west: 2.3889137
+belize:
+  east: -87.3098494
+  north: 18.496001
+  south: 15.8857286
+  west: -89.2262083
+benin:
+  east: 3.843343
+  north: 12.4092447
+  south: 6.0398696
+  west: 0.776667
+bermuda:
+  east: -64.4109842
+  north: 32.5913693
+  south: 32.0469651
+  west: -65.1232222
+bhutan:
+  east: 92.1252321
+  north: 28.246987
+  south: 26.702016
+  west: 88.7464724
+bolivia, plurinational state of:
+  east: -57.453
+  north: -9.6689438
+  south: -22.8982742
+  west: -69.6450073
+bosnia and herzegovina:
+  east: 19.6237311
+  north: 45.2764135
+  south: 42.5553114
+  west: 15.7287433
+botswana:
+  east: 29.375304
+  north: -17.778137
+  south: -26.9059669
+  west: 19.9986474
+bouvet island:
+  east: 3.7791099
+  north: -54.187
+  south: -54.654
+  west: 2.9345531
+brazil:
+  east: -28.6341164
+  north: 5.2842873
+  south: -33.8689056
+  west: -73.9830625
+british indian ocean territory:
+  east: 72.7020157
+  north: -5.037066
+  south: -7.6454079
+  west: 71.036504
+brunei darussalam:
+  east: 115.3635623
+  north: 5.1011857
+  south: 4.002508
+  west: 114.0758734
+bulgaria:
+  east: 28.8875409
+  north: 44.2167064
+  south: 41.2353929
+  west: 22.3571459
+burkina faso:
+  east: 2.4089717
+  north: 15.084
+  south: 9.4104718
+  west: -5.5132416
+burundi:
+  east: 30.8498462
+  north: -2.3096796
+  south: -4.4693155
+  west: 29.0007401
+cabo verde:
+  east: -22.6673416
+  north: 17.2053108
+  south: 14.8031546
+  west: -25.3609478
+cambodia:
+  east: 107.6276788
+  north: 14.6904224
+  south: 9.4752639
+  west: 102.3338282
+cameroon:
+  east: 16.1921476
+  north: 13.083333
+  south: 1.6546659
+  west: 8.3822176
+canada:
+  east: -52.3231981
+  north: 83.3362128
+  south: 41.6765556
+  west: -141.00275
+cayman islands:
+  east: -79.5110954
+  north: 19.9573759
+  south: 19.0620619
+  west: -81.6313748
+central african republic:
+  east: 27.4540764
+  north: 11.001389
+  south: 2.2156553
+  west: 14.4155426
+chad:
+  east: 24.0
+  north: 23.4975
+  south: 7.44107
+  west: 13.47348
+chile:
+  east: -66.0753474
+  north: -17.4983998
+  south: -56.725
+  west: -109.6795789
+china:
+  east: 134.7754563
+  north: 53.5608154
+  south: 8.8383436
+  west: 73.4997347
+christmas island:
+  east: 105.7130159
+  north: -10.4123553
+  south: -10.5698515
+  west: 105.5336422
+cocos (keeling) islands:
+  east: 97.1357343
+  north: -11.6213132
+  south: -12.4055983
+  west: 96.612524
+colombia:
+  east: -66.8511907
+  north: 16.0571269
+  south: -4.2316872
+  west: -82.1243666
+comoros:
+  east: 44.7451922
+  north: -11.165
+  south: -12.621
+  west: 43.025305
+congo:
+  east: 18.643611
+  north: 3.713056
+  south: -5.149089
+  west: 11.0048205
+congo, democratic republic of the:
+  east: 31.3056758
+  north: 5.3920026
+  south: -13.459035
+  west: 12.039074
+cook islands:
+  east: -157.1089329
+  north: -8.7168792
+  south: -22.15807
+  west: -166.0856468
+costa rica:
+  east: -82.5060208
+  north: 11.2195684
+  south: 5.3329698
+  west: -87.2722647
+croatia:
+  east: 19.4470842
+  north: 46.555029
+  south: 42.1765993
+  west: 13.2104814
+cuba:
+  east: -73.9190004
+  north: 23.4816972
+  south: 19.6275294
+  west: -85.1679702
+cyprus:
+  east: 34.8553182
+  north: 35.913252
+  south: 34.4383706
+  west: 32.0227581
+czechia:
+  east: 18.859216
+  north: 51.0557036
+  south: 48.5518083
+  west: 12.0905901
+cote d'ivoire:
+  east: -2.493031
+  north: 10.740197
+  south: 4.1621205
+  west: -8.601725
+denmark:
+  east: 15.5530641
+  north: 57.9524297
+  south: 54.4516667
+  west: 7.7153255
+djibouti:
+  east: 43.6579046
+  north: 12.7923081
+  south: 10.9149547
+  west: 41.7713139
+dominica:
+  east: -61.0329895
+  north: 15.7872222
+  south: 15.0074207
+  west: -61.6869184
+dominican republic:
+  east: -68.1101463
+  north: 21.303433
+  south: 17.2701708
+  west: -72.0574706
+ecuador:
+  east: -75.192504
+  north: 1.8835964
+  south: -5.0159314
+  west: -92.2072392
+egypt:
+  east: 37.1153517
+  north: 31.8330854
+  south: 22.0
+  west: 24.6499112
+el salvador:
+  east: -87.6351394
+  north: 14.4510488
+  south: 12.976046
+  west: -90.1790975
+equatorial guinea:
+  east: 11.3598628
+  north: 3.989
+  south: -1.6732196
+  west: 5.4172943
+eritrea:
+  east: 43.3001714
+  north: 18.0709917
+  south: 12.3548219
+  west: 36.4333653
+estonia:
+  east: 28.2100175
+  north: 59.9383754
+  south: 57.5092997
+  west: 21.3826069
+eswatini:
+  east: 32.1349923
+  north: -25.71876
+  south: -27.3175201
+  west: 30.7908
+ethiopia:
+  east: 47.9823797
+  north: 14.8940537
+  south: 3.397448
+  west: 32.9975838
+falkland islands (malvinas):
+  east: -57.3662367
+  north: -50.7973007
+  south: -53.1186766
+  west: -61.7726772
+faroe islands:
+  east: -6.2565525
+  north: 62.3942991
+  south: 61.3915553
+  west: -7.6882939
+fiji:
+  east: -178.5
+  north: -12.2613866
+  south: -21.9434274
+  west: 172.0
+finland:
+  east: 31.5867071
+  north: 70.0922939
+  south: 59.4541578
+  west: 19.0832098
+france:
+  east: 9.8678344
+  north: 51.268318
+  south: 41.2632185
+  west: -5.4534286
+french guiana:
+  east: -51.6346139
+  north: 5.7507111
+  south: 2.112222
+  west: -54.60278
+french polynesia:
+  east: -134.244799
+  north: -7.6592173
+  south: -28.0990232
+  west: -154.9360599
+french southern territories:
+  east: 77.8494974
+  north: -11.3139928
+  south: -50.2187169
+  west: 39.4138676
+gabon:
+  east: 14.539444
+  north: 2.3182171
+  south: -4.1012261
+  west: 8.5002246
+gambia:
+  east: -13.797778
+  north: 13.8253137
+  south: 13.061
+  west: -17.0288254
+georgia:
+  east: 46.7365373
+  north: 43.5864294
+  south: 41.0552922
+  west: 39.8844803
+germany:
+  east: 15.0419319
+  north: 55.099161
+  south: 47.2701114
+  west: 5.8663153
+ghana:
+  east: 1.2732942
+  north: 11.1748562
+  south: 4.5392525
+  west: -3.260786
+gibraltar:
+  east: -5.3141295
+  north: 36.180807
+  south: 36.100807
+  west: -5.3941295
+greece:
+  east: 29.7296986
+  north: 41.7488862
+  south: 34.7006096
+  west: 19.2477876
+greenland:
+  east: -10.0288759
+  north: 83.875172
+  south: 59.515387
+  west: -74.1250416
+grenada:
+  east: -61.1732143
+  north: 12.5966532
+  south: 11.786
+  west: -62.0065868
+guadeloupe:
+  east: -61.0003663
+  north: 16.5144664
+  south: 15.8320085
+  west: -61.809764
+guam:
+  east: 145.009167
+  north: 13.706179
+  south: 13.182335
+  west: 144.563426
+guatemala:
+  east: -88.1755849
+  north: 17.8165947
+  south: 13.6345804
+  west: -92.3105242
+guernsey:
+  east: -2.501814
+  north: 49.5090776
+  south: 49.4155331
+  west: -2.6751703
+guinea:
+  east: -7.6381993
+  north: 12.67563
+  south: 7.1906045
+  west: -15.5680508
+guinea-bissau:
+  east: -13.6348777
+  north: 12.6862384
+  south: 10.6514215
+  west: -16.894523
+guyana:
+  east: -56.4689543
+  north: 8.6038842
+  south: 1.1710017
+  west: -61.414905
+haiti:
+  east: -71.6217461
+  north: 20.2181368
+  south: 17.9099291
+  west: -75.2384618
+heard island and mcdonald islands:
+  east: 74.1988754
+  north: -52.7030677
+  south: -53.394741
+  west: 72.2460938
+holy see:
+  east: 12.4583653
+  north: 41.9073912
+  south: 41.9002044
+  west: 12.4457442
+honduras:
+  east: -82.1729621
+  north: 17.619526
+  south: 12.9808485
+  west: -89.3568207
+hong kong:
+  east: 114.3228131
+  north: 22.4393278
+  south: 22.1193278
+  west: 114.0028131
+hungary:
+  east: 22.8977094
+  north: 48.585257
+  south: 45.737128
+  west: 16.1138867
+iceland:
+  east: -12.8046162
+  north: 67.353
+  south: 63.0859177
+  west: -25.0135069
+india:
+  east: 97.395561
+  north: 35.6745457
+  south: 6.5546079
+  west: 68.1113787
+indonesia:
+  east: 141.0194444
+  north: 6.2744496
+  south: -11.2085669
+  west: 94.7717124
+iran, islamic republic of:
+  east: 63.3332704
+  north: 39.7816502
+  south: 24.8465103
+  west: 44.0318908
+iraq:
+  east: 48.8412702
+  north: 37.380932
+  south: 29.0585661
+  west: 38.7936719
+ireland:
+  east: -5.6582363
+  north: 55.636
+  south: 51.222
+  west: -11.0133788
+isle of man:
+  east: -4.3076853
+  north: 54.4178705
+  south: 54.0539576
+  west: -4.7946845
+israel:
+  east: 35.8950234
+  north: 33.3356317
+  south: 29.4533796
+  west: 34.2674994
+italy:
+  east: 18.7844746
+  north: 47.0921462
+  south: 35.2889616
+  west: 6.6272658
+jamaica:
+  east: -75.7541143
+  north: 18.7256394
+  south: 16.5899443
+  west: -78.5782366
+japan:
+  east: 154.205541
+  north: 45.7112046
+  south: 20.2145811
+  west: 122.7141754
+jersey:
+  east: -2.0104193
+  north: 49.2621288
+  south: 49.1625179
+  west: -2.254512
+jordan:
+  east: 39.3012981
+  north: 33.3750617
+  south: 29.183401
+  west: 34.8844372
+kazakhstan:
+  east: 87.3156316
+  north: 55.4421701
+  south: 40.5686476
+  west: 46.4932179
+kenya:
+  east: 41.899578
+  north: 4.62
+  south: -4.8995204
+  west: 33.9098987
+kiribati:
+  east: -164.1645388
+  north: 7.9483283
+  south: -7.0516717
+  west: -179.1645388
+korea, democratic people's republic of:
+  east: 130.924647
+  north: 43.0089642
+  south: 37.5867855
+  west: 124.0913902
+korea, republic of:
+  east: 132.1467806
+  north: 38.623477
+  south: 32.9104556
+  west: 124.354847
+kuwait:
+  east: 49.0046809
+  north: 30.1038082
+  south: 28.5243622
+  west: 46.5526837
+kyrgyzstan:
+  east: 80.2295793
+  north: 43.2667971
+  south: 39.1728437
+  west: 69.2649523
+lao people's democratic republic:
+  east: 107.6349989
+  north: 22.5086717
+  south: 13.9096752
+  west: 100.0843247
+latvia:
+  east: 28.2414904
+  north: 58.0855688
+  south: 55.6746505
+  west: 20.6715407
+lebanon:
+  east: 36.625
+  north: 34.6923543
+  south: 33.0479858
+  west: 34.8825667
+lesotho:
+  east: 29.4557099
+  north: -28.570615
+  south: -30.6772773
+  west: 27.0114632
+liberia:
+  east: -7.367323
+  north: 8.5519861
+  south: 4.1555907
+  west: -11.6080764
+libya:
+  east: 25.3770629
+  north: 33.3545898
+  south: 19.5008138
+  west: 9.391081
+liechtenstein:
+  east: 9.6357143
+  north: 47.270581
+  south: 47.0484291
+  west: 9.4716736
+lithuania:
+  east: 26.8355198
+  north: 56.4504213
+  south: 53.8967893
+  west: 20.653783
+luxembourg:
+  east: 6.0344254
+  north: 50.430377
+  south: 49.4969821
+  west: 4.9684415
+macao:
+  east: 113.6301389
+  north: 22.2170361
+  south: 22.0766667
+  west: 113.5281666
+madagascar:
+  east: 50.4862553
+  north: -11.9519693
+  south: -25.6071002
+  west: 43.2202072
+malawi:
+  east: 35.9185731
+  north: -9.3683261
+  south: -17.1296031
+  west: 32.6703616
+malaysia:
+  east: 120.3471939
+  north: 9.8923759
+  south: -5.1076241
+  west: 105.3471939
+maldives:
+  east: 73.9700962
+  north: 7.3106246
+  south: -0.9074935
+  west: 72.3554187
+mali:
+  east: 4.2673828
+  north: 25.001084
+  south: 10.147811
+  west: -12.2402835
+malta:
+  east: 14.8267966
+  north: 36.2852706
+  south: 35.6029696
+  west: 13.9324226
+marshall islands:
+  east: 178.4985095
+  north: 14.4518742
+  south: -0.5481258
+  west: 163.4985095
+martinique:
+  east: -60.8095833
+  north: 14.8787029
+  south: 14.3948596
+  west: -61.2290815
+mauritania:
+  east: -4.8333344
+  north: 27.314942
+  south: 14.7209909
+  west: -17.068081
+mauritius:
+  east: 63.7151319
+  north: -10.138
+  south: -20.725
+  west: 56.3825151
+mayotte:
+  east: 45.2999917
+  north: -12.6365902
+  south: -13.0210119
+  west: 45.0183298
+mexico:
+  east: -86.493266
+  north: 32.7186553
+  south: 14.3886243
+  west: -118.59919
+micronesia, federated states of:
+  east: 163.2364054
+  north: 10.291
+  south: 0.827
+  west: 137.2234512
+moldova, republic of:
+  east: 30.1636756
+  north: 48.4918695
+  south: 45.4674139
+  west: 26.6162189
+monaco:
+  east: 7.4398704
+  north: 43.7519311
+  south: 43.7247599
+  west: 7.4090279
+mongolia:
+  east: 119.931949
+  north: 52.1496
+  south: 41.5800276
+  west: 87.73762
+montenegro:
+  east: 20.3561641
+  north: 43.5585061
+  south: 41.7495999
+  west: 18.4195781
+montserrat:
+  east: -61.9353818
+  north: 17.0152978
+  south: 16.475
+  west: -62.450667
+morocco:
+  east: -0.998429
+  north: 36.0505269
+  south: 21.3365321
+  west: -17.2551456
+mozambique:
+  east: 41.0545908
+  north: -10.3252149
+  south: -26.9209427
+  west: 30.2138197
+myanmar:
+  east: 101.1700796
+  north: 28.547835
+  south: 9.4399432
+  west: 92.1719423
+namibia:
+  east: 25.2617671
+  north: -16.9634855
+  south: -28.96945
+  west: 11.5280384
+nauru:
+  east: 166.9589235
+  north: -0.5025906
+  south: -0.5541334
+  west: 166.9091794
+nepal:
+  east: 88.2015257
+  north: 30.446945
+  south: 26.3477581
+  west: 80.0586226
+netherlands:
+  east: 7.2274985
+  north: 53.7253321
+  south: 50.7295671
+  west: 1.9193492
+new caledonia:
+  east: 167.8109827
+  north: -17.6868616
+  south: -23.2217509
+  west: 162.6034343
+new zealand:
+  east: 179.3643594
+  north: -29.0303303
+  south: -52.8213687
+  west: -179.059153
+nicaragua:
+  east: -82.6227023
+  north: 15.0331183
+  south: 10.7076565
+  west: -87.901532
+niger:
+  east: 15.996667
+  north: 23.517178
+  south: 11.693756
+  west: 0.1689653
+nigeria:
+  east: 14.678014
+  north: 13.885645
+  south: 4.0690959
+  west: 2.676932
+niue:
+  east: -169.5647229
+  north: -18.7534559
+  south: -19.3548665
+  west: -170.1595029
+norfolk island:
+  east: 168.2249543
+  north: -28.796
+  south: -29.333
+  west: 167.6873878
+north macedonia:
+  east: 23.034051
+  north: 42.3735359
+  south: 40.8536596
+  west: 20.4529023
+northern mariana islands:
+  east: 146.154418
+  north: 20.616556
+  south: 14.036565
+  west: 144.813338
+norway:
+  east: 31.7614911
+  north: 71.3848787
+  south: 57.7590052
+  west: 4.0875274
+oman:
+  east: 60.054577
+  north: 26.7026737
+  south: 16.4649608
+  west: 52
+pakistan:
+  east: 77.1203914
+  north: 37.084107
+  south: 23.5393916
+  west: 60.872855
+palau:
+  east: 134.7714735
+  north: 8.222
+  south: 2.748
+  west: 131.0685462
+palestine, state of:
+  east: 35.5739235
+  north: 32.5521479
+  south: 31.2201289
+  west: 34.0689732
+panama:
+  east: -77.1393779
+  north: 9.8701757
+  south: 7.0338679
+  west: -83.0517245
+papua new guinea:
+  east: 151.7489081
+  north: 1.8183931
+  south: -13.1816069
+  west: 136.7489081
+paraguay:
+  east: -54.258
+  north: -19.2876472
+  south: -27.6063935
+  west: -62.6442036
+peru:
+  east: -68.6519906
+  north: -0.0392818
+  south: -20.1984472
+  west: -84.6356535
+philippines:
+  east: 126.8072562
+  north: 21.3217806
+  south: 4.2158064
+  west: 114.0952145
+pitcairn:
+  east: -124.717534
+  north: -23.8655769
+  south: -25.1306736
+  west: -130.8049862
+poland:
+  east: 24.145783
+  north: 55.0336963
+  south: 49.0020468
+  west: 14.1229707
+portugal:
+  east: -6.1891593
+  north: 42.1543112
+  south: 29.8288021
+  west: -31.5575303
+puerto rico:
+  east: -65.5897525
+  north: 18.5159789
+  south: 17.9268695
+  west: -67.271492
+qatar:
+  east: 52.638011
+  north: 26.3830212
+  south: 24.4707534
+  west: 50.5675
+romania:
+  east: 30.0454257
+  north: 48.2653964
+  south: 43.618682
+  west: 20.2619773
+russian federation:
+  east: 180
+  north: 82.0586232
+  south: 41.1850968
+  west: 19.6389
+rwanda:
+  east: 30.8990738
+  north: -1.0474083
+  south: -2.8389804
+  west: 28.8617546
+reunion:
+  east: 55.8366924
+  north: -20.8717136
+  south: -21.3897308
+  west: 55.2164268
+saint barthelemy:
+  east: -62.5844019
+  north: 18.1375569
+  south: 17.670931
+  west: -63.06639
+saint helena, ascension and tristan da cunha:
+  east: -5.4234153
+  north: -15.704
+  south: -16.23
+  west: -5.9973424
+saint kitts and nevis:
+  east: -62.3303519
+  north: 17.6158146
+  south: 16.895
+  west: -63.051129
+saint lucia:
+  east: -60.6669363
+  north: 14.2725
+  south: 13.508
+  west: -61.2853867
+saint martin (french part):
+  east: -62.7644063
+  north: 18.1902778
+  south: 17.8963535
+  west: -63.3605643
+saint pierre and miquelon:
+  east: -55.9033333
+  north: 47.365
+  south: 46.5507173
+  west: -56.6972961
+saint vincent and the grenadines:
+  east: -60.9094146
+  north: 13.583
+  south: 12.5166548
+  west: -61.6657471
+samoa:
+  east: -171.1929229
+  north: -13.2381892
+  south: -14.2770916
+  west: -173.0091864
+san marino:
+  east: 12.5160665
+  north: 43.992093
+  south: 43.8937002
+  west: 12.4033246
+sao tome and principe:
+  east: 7.6704783
+  north: 1.9257601
+  south: -0.2135137
+  west: 6.260642
+saudi arabia:
+  east: 55.6666851
+  north: 32.1543377
+  south: 16.29
+  west: 34.4571718
+senegal:
+  east: -11.3458996
+  north: 16.6919712
+  south: 12.2372838
+  west: -17.7862419
+serbia:
+  east: 23.006309
+  north: 46.1900524
+  south: 42.2322435
+  west: 18.8142875
+seychelles:
+  east: 56.4979396
+  north: -3.512
+  south: -10.4649258
+  west: 45.9988759
+sierra leone:
+  east: -10.271683
+  north: 9.999973
+  south: 6.755
+  west: -13.5003389
+singapore:
+  east: 104.0120359
+  north: 1.4504753
+  south: 1.1304753
+  west: 103.6920359
+slovakia:
+  east: 22.56571
+  north: 49.6138162
+  south: 47.7314286
+  west: 16.8331891
+slovenia:
+  east: 16.5967702
+  north: 46.8766816
+  south: 45.4214242
+  west: 13.3754696
+solomon islands:
+  east: 170.3964667
+  north: -4.81085
+  south: -13.2424298
+  west: 155.3190556
+somalia:
+  east: 51.6177696
+  north: 12.1889121
+  south: -1.8031969
+  west: 40.98918
+south africa:
+  east: 38.2898954
+  north: -22.1250301
+  south: -47.1788335
+  west: 16.3335213
+south georgia and the south sandwich islands:
+  east: -25.8468303
+  north: -53.3500755
+  south: -59.684
+  west: -42.354739
+spain:
+  east: 4.5918885
+  north: 43.9933088
+  south: 27.4335426
+  west: -18.3936845
+sri lanka:
+  east: 82.0810141
+  north: 10.035
+  south: 5.719
+  west: 79.3959205
+sudan:
+  east: 39.0576252
+  north: 22.224918
+  south: 8.685278
+  west: 21.8145046
+suriname:
+  east: -53.8433358
+  north: 6.225
+  south: 1.8312802
+  west: -58.070833
+svalbard and jan mayen:
+  east: 34.6891253
+  north: 81.028076
+  south: 70.6260825
+  west: -9.6848146
+sweden:
+  east: 24.1776819
+  north: 69.0599699
+  south: 55.1331192
+  west: 10.5930952
+switzerland:
+  east: 10.4922941
+  north: 47.8084648
+  south: 45.817995
+  west: 5.9559113
+syrian arab republic:
+  east: 42.3745687
+  north: 37.3184589
+  south: 32.311354
+  west: 35.4714427
+taiwan, province of china:
+  east: 122.297
+  north: 26.4372222
+  south: 10.374269
+  west: 114.3599058
+tajikistan:
+  east: 75.1539563
+  north: 41.0450935
+  south: 36.6711153
+  west: 67.3332775
+tanzania, united republic of:
+  east: 40.6584071
+  north: -0.9854812
+  south: -11.761254
+  west: 29.3269773
+thailand:
+  east: 105.636812
+  north: 20.4648337
+  south: 5.612851
+  west: 97.3438072
+timor-leste:
+  east: 127.5335392
+  north: -8.0895459
+  south: -9.5642775
+  west: 124.0415703
+togo:
+  east: 1.8087605
+  north: 11.1395102
+  south: 5.926547
+  west: -0.1439746
+tokelau:
+  east: -170.9797586
+  north: -8.3328631
+  south: -9.6442499
+  west: -172.7213673
+tonga:
+  east: -173.5295458
+  north: -15.3655722
+  south: -24.1034499
+  west: -179.3866055
+trinidad and tobago:
+  east: -60.2895848
+  north: 11.5628372
+  south: 9.8732106
+  west: -62.083056
+tunisia:
+  east: 11.8801133
+  north: 37.7612052
+  south: 30.230236
+  west: 7.5219807
+turkey:
+  east: 44.8176638
+  north: 42.297
+  south: 35.8076804
+  west: 25.6212891
+turkmenistan:
+  east: 66.6895177
+  north: 42.7975571
+  south: 35.129093
+  west: 52.335076
+turks and caicos islands:
+  east: -70.8643591
+  north: 22.1630989
+  south: 20.9553418
+  west: -72.6799046
+tuvalu:
+  east: 178.7344938
+  north: -5.4369611
+  south: -9.9939389
+  west: 175.1590468
+uganda:
+  east: 35.000308
+  north: 4.2340766
+  south: -1.4823179
+  west: 29.573433
+ukraine:
+  east: 40.2275801
+  north: 52.3791473
+  south: 44.184598
+  west: 22.137059
+united arab emirates:
+  east: 56.3834
+  north: 26.2822
+  south: 22.6444
+  west: 51.498
+united kingdom of great britain and northern ireland:
+  east: 2.0919117
+  north: 61.061
+  south: 49.674
+  west: -14.015517
+united states minor outlying islands:
+  east: -162.1339885
+  north: 6.6514388
+  south: 6.1779744
+  west: -162.6816297
+united states of america:
+  east: -66.9326
+  north: 49.5904
+  south: 24.9493
+  west: -125.0011
+uruguay:
+  east: -53.0755833
+  north: -30.0853962
+  south: -35.7824481
+  west: -58.4948438
+uzbekistan:
+  east: 73.1397362
+  north: 45.590118
+  south: 37.1821164
+  west: 55.9977865
+vanuatu:
+  east: 170.449982
+  north: -12.8713777
+  south: -20.4627425
+  west: 166.3355255
+venezuela, bolivarian republic of:
+  east: -59.5427079
+  north: 15.9158431
+  south: 0.647529
+  west: -73.3529632
+viet nam:
+  east: 114.3337595
+  north: 23.393395
+  south: 8.1790665
+  west: 102.14441
+virgin islands, british:
+  east: -64.512674
+  north: 18.464984
+  south: 17.623468
+  west: -65.159094
+virgin islands, u.s.:
+  east: -64.512674
+  north: 18.464984
+  south: 17.623468
+  west: -65.159094
+wallis and futuna:
+  east: -175.9190391
+  north: -12.9827961
+  south: -14.5630748
+  west: -178.3873749
+western sahara:
+  east: -8.666389
+  north: 27.6666834
+  south: 20.556883
+  west: -17.3494721
+yemen:
+  east: 54.7389375
+  north: 19.0
+  south: 11.9084802
+  west: 41.60825
+zambia:
+  east: 33.701111
+  north: -8.2712822
+  south: -18.0765945
+  west: 21.9993509
+zimbabwe:
+  east: 33.0683413
+  north: -15.6097033
+  south: -22.4241096
+  west: 25.2373
+aland islands:
+  east: 21.3456556
+  north: 60.87665
+  south: 59.4541578
+  west: 19.0832098

@@ -1,0 +1,20 @@
+name: bp_test
+long_name: A New product by Bethan.
+description: >
+  For testing. Please delete me.
+keywords: delete test deleteme
+link:
+srid:
+subproducts:
+  - name: temp_diff
+    long_name: Surface-Air temperature difference
+    description: The difference between surface temp and 2m temp
+    units: 'K'
+    value_range: [-100, 100]
+    precision: 0.01
+    keywords: temperature difference
+    fill_value: -999
+    frequency: 3h
+    link:
+    tiles:
+      - madagascar
