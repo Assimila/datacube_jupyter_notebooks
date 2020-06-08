@@ -1,5 +1,5 @@
 import sys
-sys.path.append("/workspace/DQTools/")
+sys.path.append("..")
 
 import matplotlib
 matplotlib.use('nbagg')
@@ -15,7 +15,7 @@ from IPython.display import display, clear_output
 from IPython.lib.display import FileLink
 
 import helpers.helpers as helpers
-from DQTools.dataset import Dataset
+from DQTools.DQTools.dataset import Dataset
 
 
 class PeatHelpers(helpers.Helpers):

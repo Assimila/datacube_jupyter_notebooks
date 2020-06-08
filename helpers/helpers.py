@@ -1,7 +1,7 @@
 from __future__ import print_function
 
 import sys
-sys.path.append("/workspace/DQTools/")
+sys.path.append("..")
 
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -26,8 +26,8 @@ from ipyleaflet import (
 from IPython.display import display, clear_output
 from IPython.lib.display import FileLink
 
-from DQTools.dataset import Dataset
-from DQTools.search import Search
+from DQTools.DQTools.dataset import Dataset
+from DQTools.DQTools.search import Search
 
 
 class Helpers:
@@ -35,8 +35,11 @@ class Helpers:
     def __init__(self, out, keyfile=None):
 
         self.out = out
-        self.keyfile = os.path.join(os.path.expanduser("~"), 
-                                    'assimila_dq.txt')
+        if keyfile is None:
+            self.keyfile = os.path.join(os.path.expanduser("~"), 
+                                        'assimila_dq.txt')
+        else:
+            self.keyfile = keyfile
 
     def get_data_from_datacube(self, product, subproduct, start, end,
                                latitude, longitude):
