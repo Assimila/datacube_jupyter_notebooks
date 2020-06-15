@@ -2,7 +2,7 @@ import sys
 sys.path.append("..")
 
 import matplotlib
-matplotlib.use('nbagg')
+# matplotlib.use('nbagg')
 import matplotlib.pyplot as plt
 import datetime as dt
 import numpy as np
@@ -185,6 +185,11 @@ class PeatHelpers(helpers.Helpers):
             clear_output()
             print("Getting data...")
 
+            # Close all existing figures
+            try:
+                plt.close('all')
+            except ValueError:
+                pass
 
             PeatHelpers.check(self, north, east, south, west, date1, date1)
             PeatHelpers.check(self, north, east, south, west, date2, date2)
@@ -202,12 +207,25 @@ class PeatHelpers(helpers.Helpers):
 
             y2 = list_of_results2
 
-            fig, axs = plt.subplots(1, 2, figsize=(9, 4))
-            y1.__getitem__(subproduct).plot(ax=axs[0])
-            y2.__getitem__(subproduct).plot(ax=axs[1])
-            plt.tight_layout()
-            plt.show()
+            # fig_, axs_ = plt.subplots(1, 2, figsize=(9, 4))
+            # y1.__getitem__(subproduct).plot(ax=axs_[0])
+            # y2.__getitem__(subproduct).plot(ax=axs_[1])
 
+            # Share axis to allow zooming on both plots simultaneously
+            fig, axs = plt.subplots(1, 2, figsize=(9, 4),
+                           sharex=True, sharey=True)
+
+            y1[subproduct][0].plot.imshow(ax=axs[0])
+            y2[subproduct][0].plot.imshow(ax=axs[1])
+
+            # Set aspect to equal to avoid any deformation
+            axs[0].set_aspect('equal')
+            axs[1].set_aspect('equal')
+
+            plt.tight_layout()
+
+            # plt.show()
+            plt.show(block=False)
 
     def prepare_map(dc, m):
 

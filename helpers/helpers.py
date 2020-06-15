@@ -7,7 +7,7 @@ import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 import matplotlib
-matplotlib.use('nbagg')
+# matplotlib.use('nbagg')
 import matplotlib.pyplot as plt
 import numpy as np
 import os
