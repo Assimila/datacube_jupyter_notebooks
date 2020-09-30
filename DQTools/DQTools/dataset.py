@@ -18,7 +18,7 @@ class Dataset:
     """
 
     def __init__(self, product, subproduct, region=None, tile=None, res=None,
-                 key_file=None):
+                 identfile=None):
         """
         Connect to the datacube and extract metadata for this particular
         product/sub-product.
@@ -59,8 +59,8 @@ class Dataset:
                                you the required resolution within the
                                bounds defined in either tile or region.
 
-        :param key_file: Assimila DQ key file required to access the
-                         HTTP server. Allows keyfile to be in a different
+        :param identfile: Assimila DQ credentials file required to access the
+                         HTTP server. Allows the file to be in a different
                          location as used by the QGIS Plugin.
         """
 
@@ -106,8 +106,8 @@ class Dataset:
             raise
 
         self.logger.info("Dataset created with product %s, subproduct %s,"
-                         "region %s, tile %s, resolution %s, keyfile %s"
-                         % (product, subproduct, region, tile, res, key_file))
+                         "region %s, tile %s, resolution %s,  credentials file %s"
+                         % (product, subproduct, region, tile, res, identfile))
         try:
             # Extract the bounds for this region, if provided
             if self.region:
@@ -123,7 +123,7 @@ class Dataset:
 
         try:
             # Instantiate the datacube connector
-            self.conn = Connect(key_file=key_file)
+            self.conn = Connect(identfile=identfile)
 
             # Download metadata for this product & sub-product & tile
             result = self.conn.get_subproduct_meta(product=self.product,
@@ -336,7 +336,7 @@ Data:
             # attributes or in self.data.attrs. Easiest if we just catch and
             # process all possibilities.
             if 'last_gold' not in self.data[self.subproduct].attrs or \
-                    self.data[self.subproduct].attrs['last_gold'] == None:
+                    self.data[self.subproduct].attrs['last_gold'] is None:
 
                 if 'last_gold' not in self.data.attrs:
                     self.data[self.subproduct].attrs['last_gold'] = self.last_gold

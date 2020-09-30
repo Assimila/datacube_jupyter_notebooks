@@ -8,7 +8,7 @@ statements which are removed here for clarity.
 REQUIRES .assimila_dq file to work - this is in the test/ area.
 ***************************************************************
 
-Key code modified from ECMWF api.py
+Code modified from ECMWF api.py
 (https://software.ecmwf.int/wiki/download/attachments/56664858/ecmwf-
 api-client-python.tgz)
 which is (C) Copyright 2012-2013 ECMWF.
@@ -32,7 +32,7 @@ import datetime
 
 
 # Exception class
-class DQKeyFetchError(Exception):
+class DQIdentFetchError(Exception):
     def __init__(self, arg):
         self.message = arg
 
@@ -40,81 +40,83 @@ class DQKeyFetchError(Exception):
         return repr(self.message)
 
 
-def _get_dqkey_from_env():
+def _get_dqident_from_env():
     """
     Query environment variables for DQ connection details.
     All must be set for this to be valid.
     :return: connection information
     """
     try:
-        key = os.environ["ASSIMILA_DQ_KEY"]
+        pwd = os.environ["ASSIMILA_DQ_PWD"]
         port = os.environ["ASSIMILA_DQ_PORT"]
         url = os.environ["ASSIMILA_DQ_URL"]
         login = os.environ["ASSIMILA_DQ_LOGIN"]
-        return key, url, port, login
+        return pwd, url, port, login
     except KeyError:
-        raise DQKeyFetchError("ERROR: Could not get the DataCube key from "
+        raise DQIdentFetchError("ERROR: Could not get the DataCube credentials from "
                               "the environment")
 
 
-def _get_dqkey_from_file(keyfile=None):
+def _get_dqident_from_file(identfile=None):
     """
     Obtain DQ connection details from user's file.
+    :param identfile: file containing datacube connection identification and credentials
     :return: connection information
     """
     # TODO decide on standard location of specific user connection file
     # dq_file = os.path.normpath(os.path.expanduser("~/.assimila_dq"))
 
-    if keyfile is None:
+    if identfile is None:
         # this line assumes that the client's password is in the same
         # place as the code creating the AssimilaData() object.
         dq_file = op.join(op.abspath(op.curdir), ".assimila_dq")
     else:
-        dq_file = keyfile
+        dq_file = identfile
 
     try:
         with open(dq_file) as f:
             config = json.load(f)
     except IOError as e:  # Failed reading from file
-        raise DQKeyFetchError("ERROR: File reading failed" + str(e))
+        raise DQIdentFetchError("ERROR: File reading failed" + str(e))
     except ValueError:  # JSON decoding failed
-        raise DQKeyFetchError("ERROR: Missing or malformed DQ key in '%s'"
+        raise DQIdentFetchError("ERROR: Missing or malformed DQ identification in '%s'"
                               % dq_file)
     except Exception as e:  # Unexpected error
-        raise DQKeyFetchError(str(e))
+        raise DQIdentFetchError(str(e))
 
     try:
-        key = config["key"]
+        pwd = config["pwd"]
         port = config["port"]
         url = config["url"]
         login = config["login"]
-        return key, url, port, login
+        return pwd, url, port, login
 
     except Exception:
-        raise DQKeyFetchError("ERROR: Missing or malformed DQ key in '%s'"
+        raise DQIdentFetchError("ERROR: Missing or malformed DQ identification in '%s'"
                               % dq_file)
 
 
-def get_dqkey_values(keyfile=None):
+def get_dqident_values(identfile=None):
     """
-    Get the DataCube key from the environment or the '.assimila_dq'
+    Get the DataCube identification from the environment or the '.assimila_dq'
     file. The environment is looked at first.
 
-    :return: tuple with the key, url, port and login forming the API
-             key.
+    :param identfile: optional location of user's credentials file
+    :return: tuple with the pwd, url, port and login forming the API
+             identification.
 
-    :raise: APIKeyFetchError: When unable to get the API key from
+    :raise: DQIdentFetchError: When unable to get the API identification from
             either the environment or the assimila_dq file.
     """
     try:
-        key_values = _get_dqkey_from_env()
-    except DQKeyFetchError:
+        ident_values = _get_dqident_from_env()
+    except DQIdentFetchError:
         try:
-            key_values = _get_dqkey_from_file(keyfile)
-        except DQKeyFetchError:
+            ident_values = _get_dqident_from_file(identfile)
+        except DQIdentFetchError:
             raise
 
-    return key_values
+    return ident_values
 
 # ======================================================================
 # Methods and classes to support http connection.
@@ -135,7 +137,7 @@ class APIRequest(object):
     Note that the class is instantiated afresh on each connection so
     cannot keep any instance variables between connections.
     """
-    def __init__(self, logger, service, url, login=None, key=None):
+    def __init__(self, logger, service, url, login=None, pwd=None):
         """
         Create DQ client http object.
         Ensure user has correct credentials.
@@ -144,7 +146,7 @@ class APIRequest(object):
         :param service: command from user
         :param url: http connection address
         :param login: user login
-        :param key: user key
+        :param pwd: user encrypted password
         :raise ConnectionRefusedError: for any problem with login details
         :raise ConnectionError: for problems connecting to the server
         :raise Exception: anything else
@@ -153,28 +155,28 @@ class APIRequest(object):
         self.service = service
         self.url = url
         self.login = login
-        self.key = key
+        self.pwd = pwd
 
-        try:
-            # check credentials with simple connection. Header could
-            # contain cookie for future use.
-            hdrs = {"From": self.login, "X-DQ-KEY": self.key,
-                    "X-DQ-SERVICE": self.service}
-            resp = requests.get(self.url, headers=hdrs)
-
-            if resp.status_code != 200:
-                raise ConnectionRefusedError(resp.headers)
-
-        except ConnectionRefusedError:
-            # catch the error we've just raised to ensure it gets
-            # passed up verbatim.
-            raise
-        except ConnectionError as e:
-            print("Connection Error : %s" % e.args)
-            raise
-        except Exception as e:
-            print("Other error : %s" % e.__repr__())
-            raise
+        # try:
+        #     # check credentials with simple connection. Header could
+        #     # contain cookie for future use.
+        #     hdrs = {"From": self.login, "X-DQ-PWD": self.pwd,
+        #             "X-DQ-SERVICE": self.service}
+        #     resp = requests.get(self.url, headers=hdrs)
+        #
+        #     if resp.status_code != 200:
+        #         raise ConnectionRefusedError(resp.headers)
+        #
+        # except ConnectionRefusedError:
+        #     # catch the error we've just raised to ensure it gets
+        #     # passed up verbatim.
+        #     raise
+        # except ConnectionError as e:
+        #     print("Connection Error : %s" % e.args)
+        #     raise
+        # except Exception as e:
+        #     print("Other error : %s" % e.__repr__())
+        #     raise
 
     def get_from_dq(self, req):
         """
@@ -191,7 +193,7 @@ class APIRequest(object):
         """
         try:
             payload = pickle.dumps(req, protocol=-1)
-            resp = requests.post(self.url, data=payload)
+            resp = requests.post(self.url, auth=(self.login, self.pwd), data=payload)
 
             if resp.status_code != 200:
 
@@ -218,7 +220,10 @@ class APIRequest(object):
 
                 resp.headers.update({'error': formatted_str})
 
-                raise Exception(resp.headers['error'])
+                if resp.status_code == 401:
+                    raise ConnectionRefusedError(resp.headers)
+                else:
+                    raise Exception(resp.headers['error'])
 
             if self.service == "GET_FILE":
                 target = req.get("target")
@@ -264,14 +269,19 @@ class APIRequest(object):
         try:
             # for metadata and registration, this request contains ALL info.
             payload = pickle.dumps(req, protocol=-1)
-            resp_1 = requests.post(self.url, data=payload)
+            resp_1 = requests.post(self.url, auth=(self.login, self.pwd), data=payload)
 
             if resp_1.status_code != 200:
                 formatted_str = resp_1.headers['error'].replace(
                         "\\n", "\n").replace("\\", " ").replace("(", "") \
                     .replace(")", "")
+
                 resp_1.headers.update({'error': formatted_str})
-                raise Exception(resp_1.headers['error'])
+
+                if resp_1.status_code == 401:
+                    raise ConnectionRefusedError(resp_1.headers)
+                else:
+                    raise Exception(resp_1.headers['error'])
 
             # extract the response's text for PUT_FILE and PUT_DATA only.
             if self.service == "PUT_FILE":
@@ -288,6 +298,7 @@ class APIRequest(object):
                         payload = gzip.compress(f_in.read())
 
                     resp_2 = requests.put(put_url,
+                                          auth=(self.login, self.pwd),
                                           data=payload)
                     if resp_2.status_code != 200:
                         raise Exception(resp_2.headers)
@@ -304,7 +315,9 @@ class APIRequest(object):
                     payload_pickled = pickle.dumps(data, protocol=-1)
                     payload = gzip.compress(payload_pickled)
 
-                    resp_2 = requests.put(put_url, data=payload)
+                    resp_2 = requests.put(put_url,
+                                          auth=(self.login, self.pwd),
+                                          data=payload)
 
                     if resp_2.status_code != 200:
                         raise Exception(resp_2.headers)
@@ -339,8 +352,8 @@ class AssimilaData(object):
     Subsequent requests are handled by do_POST() and do_PUT() where the
     command sent in the request determines the behaviour.
     """
-    def __init__(self, url=None, port=None, key=None, login=None,
-                 keyfile=None):
+    def __init__(self, url=None, port=None, pwd=None, login=None,
+                 identfile=None):
         """
         Create the DQ client API object.
         Connection information may be provided. If none, or some is
@@ -349,9 +362,9 @@ class AssimilaData(object):
 
         :param url: DQ server address
         :param port: DQ server port
-        :param key: User's unique key (as provided by Assimila)
+        :param pwd: User's unique pwd (as provided by Assimila)
         :param login: User's unique login string with date, access and email
-        :param keyfile: optional location of connection file
+        :param identfile: optional location of user's credentials file
         """
         # set up the logging output filename here so that no changes are
         # needed in its configuration file.
@@ -368,17 +381,18 @@ class AssimilaData(object):
                                       "./connect_log/logging_config.yml")))
         self.logger = logging.getLogger("__main__")
 
-        if url is None or port is None or key is None or login is None:
-            key, url, port, login = get_dqkey_values(keyfile)
+        if url is None or port is None or pwd is None or login is None:
+            pwd, url, port, login = get_dqident_values(identfile)
 
         self.url = url
-        self.key = key
+        self.pwd = pwd
         self.login = login
         self.port = port
         self.full_url = self.url + ':' + self.port
 
-        # self.logger.info(f"HTTP Client initialised with keyfile: {keyfile}")
-        self.logger.info("HTTP Client initialised with keyfile: %s" % keyfile)
+        # self.logger.info(f"HTTP Client initialised with identification file: {identfile}")
+        self.logger.info("HTTP Client initialised with identification file: %s"
+                         % identfile)
 
     def __del__(self):
         logging.shutdown()
@@ -396,7 +410,7 @@ class AssimilaData(object):
         """
         try:
             c = APIRequest(self.logger, req.get('command'),
-                           self.full_url, self.login, self.key)
+                           self.full_url, self.login, self.pwd)
 
             if req.get('command') == 'GET_FILE':
                 c.get_from_dq(req)
@@ -426,7 +440,7 @@ class AssimilaData(object):
         """
         try:
             c = APIRequest(self.logger, req.get('command'),
-                           self.full_url, self.login, self.key)
+                           self.full_url, self.login, self.pwd)
 
             if req.get('command') == 'PUT_DATA':
                 c.put_to_dq(req, data=data)

@@ -14,11 +14,15 @@ class Search:
     class in the DataCube at: src/datacube/dq_database/db_view.py
     """
 
-    def __init__(self):
+    def __init__(self, identfile=None):
         """
         Set up logging.
+
+        :param identfile: Assimila DQ credentials file required to access the
+                 HTTP server. Allows the file to be in a different location.
         """
         try:
+            self.identfile = identfile
             # base, extension = op.splitext('search.log')
             # today = datetime.datetime.today()
             # log_filename = "{}{}{}".format(base,
@@ -42,7 +46,7 @@ class Search:
         """
         try:
             # Instantiate the datacube connector
-            conn = Connect()
+            conn = Connect(identfile=self.identfile)
 
             # extract a dataframe of the tile table
             df = conn.get_all_table_data("tile")
@@ -61,7 +65,7 @@ class Search:
         """
         try:
             # Instantiate the datacube connector
-            conn = Connect()
+            conn = Connect(identfile=self.identfile)
 
             # extract a dataframe of the product table
             df = conn.get_all_table_data("product")
@@ -80,7 +84,7 @@ class Search:
         """
         try:
             # Instantiate the datacube connector
-            conn = Connect()
+            conn = Connect(identfile=self.identfile)
 
             # extract a dataframe of the sub-product table
             df = conn.get_all_table_data("subproduct")
@@ -100,7 +104,7 @@ class Search:
         """
         try:
             # Instantiate the datacube connector
-            conn = Connect()
+            conn = Connect(identfile=self.identfile)
 
             return conn.get_product_subproducts(product)
 

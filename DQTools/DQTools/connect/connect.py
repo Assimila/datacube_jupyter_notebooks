@@ -9,18 +9,18 @@ class Connect:
 
     """
 
-    def __init__(self, key_file=None):
+    def __init__(self, identfile=None):
         """
         Make connection to the DataCube.
 
-        :param key_file: location of data cube key file
+        :param identfile: optional location of user's credentials file
 
         """
 
-        if not key_file:
-            key_file = op.join(op.dirname(__file__), ".assimila_dq")
+        if not identfile:
+            identfile = op.join(op.dirname(__file__), ".assimila_dq")
 
-        self.http_client = AssimilaData(keyfile=key_file)
+        self.http_client = AssimilaData(identfile=identfile)
 
     def get_product_subproducts(self, product):
         """
@@ -90,7 +90,7 @@ class Connect:
                             'bounds': bounds,
                             'tile': tile}})
 
-            return result[0]
+            return result
 
         except Exception as e:
             raise e
