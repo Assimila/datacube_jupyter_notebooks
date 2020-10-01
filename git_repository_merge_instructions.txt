@@ -1,0 +1,34 @@
+The DQTools directory in this repository is NOT a copy but is a link to the
+DQTools repository itself.
+
+This has been achieved using the following commands:
+
+change to correct folder
+    cd datacube_jupyter_notebooks
+list available branches
+    git branch
+change to correct branch
+    git checkout peatlands
+add the remote repository
+    git remote add -f <name> <location>
+    <name>=DQTools (but could be anything sensible)
+    <location>=https://github.com/Assimila/DQTools.git
+    this will add the master branch ready to merge
+pull the desired branch into git knowledge
+    git merge -s ours --no-commit --allow-unrelated-histories <name>/<branch>
+    <name>=DQTools
+    <branch>=release
+magic spell time... create the working copy
+    git read-tree --prefix=<subdir> -u <name>/<branch>
+    <subdir>=DQTools (but could be anything sensible)
+    <name>=DQTools
+    <branch>=release
+now commit it all
+    git commit -m "sub-tree added"
+
+
+To get a specific branch or tag of the nested repository
+    git pull -s subtree <subdir> <branch or tag>
+    <subdir>=DQTools
+    <branch or tag>=v2.0-beta-V_RC5 for example
+You can then make a release of the parent repository as normal.
