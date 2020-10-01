@@ -97,7 +97,7 @@ class PeatHelpers(helpers.Helpers):
     def check_date(self, product, subproduct, date):
         ds = Dataset(product=product,
                      subproduct=subproduct,
-                     key_file=self.keyfile)
+                     identfile=self.keyfile)
 
         first_date = ds.first_timestep
         last_date = ds.last_timestep
@@ -127,7 +127,7 @@ class PeatHelpers(helpers.Helpers):
                                latitude, longitude, projection=None):
         ds = Dataset(product=product,
                      subproduct=subproduct,
-                     key_file=self.keyfile)
+                     identfile=self.keyfile)
 
         first, last = self.get_dates(ds, start, end)
         ds.get_data(start=first, stop=last, projection=projection,
