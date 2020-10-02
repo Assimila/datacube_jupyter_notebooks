@@ -43,7 +43,7 @@ class Helpers:
 
         ds = Dataset(product=product, 
                      subproduct=subproduct,
-                     key_file=self.keyfile)
+                     identfile=self.keyfile)
 
         ds.get_data(start=start, stop=end,
                     latlon=[latitude, longitude])
@@ -59,7 +59,7 @@ class Helpers:
 
             ds = Dataset(product=product, 
                          subproduct=subproduct,
-                         key_file=self.keyfile)
+                         identfile=self.keyfile)
 
             ds.get_data(start=start, stop=end,
                         region=[north, east, south,west])
